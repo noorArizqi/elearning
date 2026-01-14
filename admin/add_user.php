@@ -33,69 +33,71 @@ if ($_POST) {
     exit;
 }
 ?>
-
-<!-- Tambahkan CSS -->
+<!-- Tambahkan CSS form -->
 <link rel="stylesheet" href="/elearning/assets/css/form.css">
 
-<h2>➕ Tambah Pengguna Baru</h2>
+<div class="container">
+    <h2 class="page-title">➕ Tambah Pengguna Baru</h2>
 
-<?php if (isset($_GET['success'])): ?>
-    <div class="form-success">Pengguna berhasil ditambahkan.</div>
-<?php endif; ?>
+    <?php if (isset($_GET['success'])): ?>
+        <div class="form-success">✅ Pengguna berhasil ditambahkan.</div>
+    <?php endif; ?>
 
-<div class="form-container">
-    <form method="post">
-        <div class="form-group">
-            <label class="form-label">Username:</label>
-            <input type="text" name="username" class="form-input" required>
-        </div>
-
-        <div class="form-group">
-            <label class="form-label">Password:</label>
-            <input type="password" name="password" class="form-input" required>
-        </div>
-
-        <div class="form-group">
-            <label class="form-label">Nama Lengkap:</label>
-            <input type="text" name="nama_lengkap" class="form-input" required>
-        </div>
-
-        <div class="form-group">
-            <label class="form-label">Email:</label>
-            <input type="email" name="email" class="form-input" required>
-        </div>
-
-        <div class="form-group">
-            <label class="form-label">Role:</label>
-            <select name="role" class="form-select" required>
-                <option value="admin">Admin</option>
-                <option value="dosen">Dosen</option>
-                <option value="mahasiswa">Mahasiswa</option>
-            </select>
-        </div>
-
-        <!-- Profil untuk Dosen & Mahasiswa -->
-        <div id="profil-fields" style="display:none; margin-top:20px; padding:15px; background:#f8f9fa; border-radius:6px;">
-            <h3 class="form-label">👤 Profil</h3>
+    <div class="form-container">
+        <form method="post">
             <div class="form-group">
-                <label class="form-label">NIM/NIDN:</label>
-                <input type="text" name="nim_nidn" class="form-input">
+                <label class="form-label">Username</label>
+                <input type="text" name="username" class="form-input" required placeholder="Masukkan username unik">
             </div>
-            <div class="form-group">
-                <label class="form-label">Fakultas:</label>
-                <input type="text" name="fakultas" class="form-input">
-            </div>
-            <div class="form-group">
-                <label class="form-label">Prodi:</label>
-                <input type="text" name="prodi" class="form-input">
-            </div>
-        </div>
 
-        <div class="form-btns">
-            <button type="submit" class="btn btn-primary">Simpan</button>
-            <a href="manage_users.php" class="btn btn-secondary">Batal</a>
-        </div>
-    </form>
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-input" required minlength="6" placeholder="Minimal 6 karakter">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Nama Lengkap</label>
+                <input type="text" name="nama_lengkap" class="form-input" required placeholder="Nama lengkap pengguna">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-input" required placeholder="contoh@univ.ac.id">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Role</label>
+                <select name="role" class="form-select" required>
+                    <option value="">-- Pilih Role --</option>
+                    <option value="admin">Admin</option>
+                    <option value="dosen">Dosen</option>
+                    <option value="mahasiswa">Mahasiswa</option>
+                </select>
+            </div>
+
+            <!-- Profil untuk Dosen & Mahasiswa -->
+            <div id="profil-fields">
+                <h3 class="form-label">👤 Data Profil Tambahan</h3>
+                <div class="form-group">
+                    <label class="form-label">NIM / NIDN</label>
+                    <input type="text" name="nim_nidn" class="form-input" placeholder="Contoh: 23105123 atau 19870101">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Fakultas</label>
+                    <input type="text" name="fakultas" class="form-input" placeholder="Contoh: Ilmu Komputer">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Program Studi</label>
+                    <input type="text" name="prodi" class="form-input" placeholder="Contoh: Teknologi Informasi">
+                </div>
+            </div>
+
+            <div class="form-btns">
+                <button type="submit" class="btn btn-primary">Simpan Pengguna</button>
+                <a href="manage_users.php" class="btn btn-secondary">Batal</a>
+            </div>
+        </form>
+    </div>
 </div>
 
 <script>

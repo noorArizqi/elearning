@@ -53,14 +53,14 @@ $classes = $stmt->fetchAll();
 .btn {
     display: inline-block;
     padding: 8px 16px;
-    background: #3498db;
+    background: #eca20cff;
     color: white;
     text-decoration: none;
     border-radius: 4px;
     font-size: 14px;
 }
 .btn:hover {
-    background: #2980b9;
+    background: #da1803ff;
 }
 .alert {
     padding: 15px;

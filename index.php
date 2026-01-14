@@ -35,51 +35,69 @@ if ($_POST) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login eLearning</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f5f7fa;
+            display: flex;
+            height: 100vh;
+            background: #f8f9fa;
+        }
+
+        .logo-section {
+            width: 50%;
+            background: #0056b3;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-        }
-
-        .login-container {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
+            padding: 20px;
         }
 
         .logo {
-            width: 120px;
+            max-width: 80%;
             height: auto;
-            margin-bottom: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-section {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            background: white;
+        }
+
+        .login-form {
+            width: 100%;
+            max-width: 360px;
+            text-align: left;
         }
 
         h2 {
             color: #2c3e50;
             margin-bottom: 20px;
             font-weight: 600;
+            letter-spacing: 0.5px;
+            font-size: 20px;
         }
 
         .form-group {
-            position: relative;
             margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #555;
         }
 
         .form-input {
@@ -88,13 +106,12 @@ if ($_POST) {
             border: 1px solid #ddd;
             border-radius: 6px;
             font-size: 14px;
-            transition: border-color 0.2s, box-shadow 0.2s;
+            transition: border-color 0.2s;
         }
 
         .form-input:focus {
             outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+            border-color: #0056b3;
         }
 
         .toggle-password {
@@ -107,90 +124,120 @@ if ($_POST) {
             font-size: 16px;
         }
 
+        .password-wrapper {
+            position: relative;
+        }
+
         .btn {
             width: 100%;
             padding: 12px;
-            background: #2c3e50;
+            background: #0056b3;
             color: white;
             border: none;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: background 0.2s;
         }
 
         .btn:hover {
-            background: #1a252c;
+            background: #004494;
+        }
+
+        .forgot-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #0056b3;
+            text-decoration: none;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
         }
 
         .error {
             color: #e74c3c;
             margin: 10px 0;
-            font-size: 14px;
-        }
-
-        .footer {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #7f8c8d;
+            font-size: 13px;
+            padding: 8px;
+            background: #fdf2f2;
+            border-radius: 4px;
+            border-left: 3px solid #e74c3c;
         }
 
         /* Responsif */
-        @media (max-width: 480px) {
-            .login-container {
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            .logo-section, .login-section {
+                width: 100%;
                 padding: 30px 20px;
-                margin: 20px;
+            }
+            .logo {
+                max-width: 60%;
             }
         }
     </style>
 </head>
 <body>
 
-<div class="login-container">
+<div class="logo-section">
     <!-- Logo Kampus -->
-<img src="/elearning/assets/logo.png" 
-     alt="Logo Universitas" 
-     class="logo"
-     onerror="this.src='/elearning/assets/images/default-logo.png'; this.alt='Logo Default'">
+    <img src="/elearning/assets/logo.png" 
+         alt="Logo Institut Teknologi Statistika dan Bisnis Muhammadiyah Semarang" 
+         class="logo"
+         onerror="this.src='/elearning/assets/images/default-logo.png'; this.alt='Logo Default'">
+</div>
 
-    <h2>LOGIN eLEARNING</h2>
+<div class="login-section">
+    <div class="login-form">
+        <h2>LOG IN</h2>
 
-    <?php if ($error): ?>
-        <div class="error"><?= htmlspecialchars($error) ?></div>
-    <?php endif; ?>
+        <?php if (!empty($error)): ?>
+            <div class="error"><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></div>
+        <?php endif; ?>
 
-    <form method="post">
-        <div class="form-group">
-            <input type="text" name="username" placeholder="Username" class="form-input" required>
-        </div>
+        <form method="post">
+            <div class="form-group">
+                <label for="username">NIM</label>
+                <input type="text" name="username" id="username" placeholder="Nim Mahasiswa" class="form-input" required autocomplete="username">
+            </div>
 
-        <div class="form-group">
-            <input type="password" name="password" id="password" placeholder="Password" class="form-input" required>
-            <span class="toggle-password" onclick="togglePassword()">
-                👁️
-            </span>
-        </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="password-wrapper">
+                    <input type="password" name="password" id="password" placeholder="Enter your password" class="form-input" required autocomplete="current-password">
+                    <span class="toggle-password" onclick="togglePassword()">
+                        <i class="far fa-eye" id="eye-icon"></i>
+                    </span>
+                </div>
+            </div>
 
-        <button type="submit" class="btn">Masuk</button>
-    </form>
-
-    <div class="footer">
-        © 2026 Sistem eLearning - Universitas ITESA
+            <button type="submit" class="btn">LOG IN</button>
+            <a href="#" class="forgot-link">Forgot Password</a>
+        </form>
     </div>
 </div>
 
 <script>
 function togglePassword() {
     const passwordInput = document.getElementById('password');
-    const toggleIcon = document.querySelector('.toggle-password');
+    const eyeIcon = document.getElementById('eye-icon');
     
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
-        toggleIcon.textContent = '👁️‍🗨️'; // Mata terbuka
+        eyeIcon.classList.remove('fa-eye');
+        eyeIcon.classList.add('fa-eye-slash');
     } else {
         passwordInput.type = 'password';
-        toggleIcon.textContent = '👁️'; // Mata tertutup
+        eyeIcon.classList.remove('fa-eye-slash');
+        eyeIcon.classList.add('fa-eye');
     }
 }
 </script>
