@@ -41,35 +41,98 @@ if ($_POST) {
 <!-- Tambahkan CSS form -->
 <link rel="stylesheet" href="/elearning/assets/css/form.css">
 
-<h2>📅 Buat Pertemuan Baru</h2>
+<style>
 
-<?php if ($error): ?>
-    <div style="background:#f8d7da; color:#721c24; padding:15px; margin:20px; border-radius:6px; text-align:center;"><?= htmlspecialchars($error) ?></div>
-<?php endif; ?>
 
-<div class="form-container">
-    <form method="post">
-        <div class="form-group">
-            <label class="form-label">Pertemuan ke:</label>
-            <input type="number" name="pertemuan" min="1" max="16" class="form-input" placeholder="Contoh: 1" required>
-            <small style="color:#7f8c8d;">Nomor pertemuan (1-16)</small>
-        </div>
+/* Buttons */
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
 
-        <div class="form-group">
-            <label class="form-label">Tanggal:</label>
-            <input type="date" name="tanggal" class="form-input" value="<?= date('Y-m-d') ?>" required>
-        </div>
+.btn {
+    flex: 1;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+.btn-primary {
+    background-color: #4f46e5;
+    color: white;
+}
+.btn-primary:hover {
+    background-color: #4338ca;
+}
+.btn-secondary {
+    background-color: #f1f5f9;
+    color: #334155;
+}
+.btn-secondary:hover {
+    background-color: #e2e8f0;
+}
+</style>
 
-        <div class="form-group">
-            <label class="form-label">Topik:</label>
-            <input type="text" name="topik" class="form-input" placeholder="Contoh: Pengenalan HTML & CSS" required>
-        </div>
+<div class="page-container">
+    <h2 class="page-title">📅 Buat Pertemuan Baru</h2>
 
-        <div class="form-btns">
-            <button type="submit" class="btn btn-primary">Buat & Generate QR</button>
-            <a href="manage_class.php?id=<?= $class_id ?>" class="btn btn-secondary">Batal</a>
-        </div>
-    </form>
+    <?php if (!empty($error)): ?>
+        <div class="alert-error"><?= htmlspecialchars($error) ?></div>
+    <?php endif; ?>
+
+    <div class="form-card">
+        <form method="post">
+            <div class="form-group">
+                <label class="form-label">Pertemuan ke:</label>
+                <input 
+                    type="number" 
+                    name="pertemuan" 
+                    min="1" 
+                    max="16" 
+                    class="form-input" 
+                    placeholder="Contoh: 1" 
+                    required
+                >
+                <span class="form-hint">Nomor pertemuan (1–16)</span>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Tanggal:</label>
+                <input 
+                    type="date" 
+                    name="tanggal" 
+                    class="form-input" 
+                    value="<?= date('Y-m-d') ?>" 
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Topik:</label>
+                <input 
+                    type="text" 
+                    name="topik" 
+                    class="form-input" 
+                    placeholder="Contoh: Pengenalan HTML & CSS" 
+                    required
+                >
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Buat & Generate QR</button>
+                <a href="manage_class.php?id=<?= $class_id ?>" class="btn btn-secondary">Batal</a>
+            </div>
+        </form>
+    </div>
 </div>
-
 <?php include '../includes/footer.php'; ?>
+
+
+

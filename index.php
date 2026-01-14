@@ -189,7 +189,7 @@ if ($_POST) {
 
 <div class="logo-section">
     <!-- Logo Kampus -->
-    <img src="/elearning/assets/logo.png" 
+    <img src="assets\Logo.jpg" 
          alt="Logo Institut Teknologi Statistika dan Bisnis Muhammadiyah Semarang" 
          class="logo"
          onerror="this.src='/elearning/assets/images/default-logo.png'; this.alt='Logo Default'">
