@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box;;
 }
 
 body {
@@ -18,9 +18,10 @@ body {
 }
 
 header {
-    background: #2c3e50;
+    background: #0044ffff;
     color: white;
     padding: 1rem 0;
+    transition: background 0.3s ease;
 }
 
 header .container {
@@ -92,3 +93,29 @@ footer {
     padding: 1rem 0;
     margin-top: 40px;
 }
+footer {
+    background: #1e293b; /* Abu-abu kebiruan gelap */
+    color: rgba(255, 255, 255, 0.7);
+    padding: 4px 2;
+    margin-top: 170px;
+    font-size: 16px;
+    border-top: 1px solid #334155;
+}
+
+footer .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    footer {
+    padding: 16px 0;
+    font-size: 16px;
+    margin-top: 100px;}
+        }
