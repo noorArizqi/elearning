@@ -153,7 +153,7 @@ CREATE TABLE `forum_replies` (
 INSERT INTO `forum_replies` (`id`, `id_thread`, `id_user`, `isi_komentar`, `created_at`) VALUES
 (1, 1, 3, 'siap pak, kami akan bahas', '2026-01-11 18:36:05'),
 (2, 1, 2, 'tolong beritahu teman yang lain', '2026-01-11 18:45:40'),
-(3, 1, 3, 'siap pal', '2026-01-11 21:54:32');
+(3, 1, 3, 'siap pak', '2026-01-11 21:54:32');
 
 -- --------------------------------------------------------
 
@@ -245,7 +245,7 @@ CREATE TABLE `notifications` (
 
 INSERT INTO `notifications` (`id`, `id_user`, `id_from`, `message`, `link`, `is_read`, `created_at`) VALUES
 (1, 2, 3, 'Ada balasan baru di thread: siap pak, kami akan bahas', '/elearning/mahasiswa/forum/view_replies.php?thread_id=1', 1, '2026-01-11 18:36:05'),
-(2, 2, 3, 'Ada balasan baru di thread: siap pal', '/elearning/mahasiswa/forum/view_replies.php?thread_id=1', 1, '2026-01-11 21:54:32');
+(2, 2, 3, 'Ada balasan baru di thread: siap pak', '/elearning/mahasiswa/forum/view_replies.php?thread_id=1', 1, '2026-01-11 21:54:32');
 
 -- --------------------------------------------------------
 
@@ -267,11 +267,11 @@ CREATE TABLE `profiles` (
 --
 
 INSERT INTO `profiles` (`id_user`, `nim_nidn`, `foto`, `alamat`, `fakultas`, `prodi`) VALUES
-(1, NULL, NULL, NULL, 'Teknik', 'Sistem Informasi'),
-(2, '19870101', NULL, NULL, 'Teknik', 'Teknik Informatika'),
-(3, '23105123', NULL, NULL, 'Ilmu Komputer', 'Teknologi Informasi'),
-(4, '1234A123', NULL, NULL, 'Ilmu Komputer', 'Magang'),
-(5, '111999000', NULL, NULL, 'Teknik', 'Teknologi Informasi');
+(1, NULL, NULL, NULL, 'Sains dan Teknologi', 'Rekayasa Perangkat Lunak'),
+(2, '19870101', NULL, NULL, 'Sains dan Teknologi', 'Teknik Statistika'),
+(3, '23105123', NULL, NULL, 'Sains dan Teknologi', 'Rekayasa Perangkat Lunak'),
+(4, '1234A123', NULL, NULL, 'Sains dan Teknologi', 'Magang'),
+(5, '111999000', NULL, NULL, 'Sains dan Teknologi', 'Manajemen Retail');
 
 -- --------------------------------------------------------
 
